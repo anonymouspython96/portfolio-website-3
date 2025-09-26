@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Interactive To-Do List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Chosen Palette: Warm Neutrals -->
+    <!-- Application Structure Plan: A single-view application centered on the core task management functionality. The structure includes a header for context (title and date), a primary input form for adding tasks, a dynamic list to display tasks, and a footer with controls for filtering and clearing. This user-centric design prioritizes efficiency, making the primary actions of adding and managing tasks immediate and intuitive. The flow is straightforward: add, view, manage, and filter, all within one screen to minimize cognitive load and maximize usability. -->
+    <!-- Visualization & Content Choices: The primary content is the user's list of tasks. Goal: Organize and manage user-generated content. Presentation Method: An HTML unordered list (`<ul>`), with each task as a list item (`<li>`). Interaction: Users can add tasks via a form, mark tasks as complete using checkboxes, and delete tasks with a dedicated button. Filtering buttons allow the user to change the view of the list. Justification: This standard list-based interface is universally understood for to-do applications, providing a clean, effective, and interactive way to manage tasks without the need for complex visualizations or libraries like Chart.js. Persistence is handled by `localStorage`. -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="flex items-center justify-center min-h-screen">
+
+    <div
+        class="w-full max-w-lg mx-auto bg-white/60 backdrop-blur-sm shadow-2xl shadow-stone-300/40 rounded-2xl p-6 md:p-8">
+        <header class="text-center mb-6">
+            <h1 class="text-3xl font-bold text-stone-700">My Day</h1>
+            <p id="current-date" class="text-stone-500 mt-1"></p>
+        </header>
+
+        <section class="mb-6">
+            <form id="add-task-form" class="flex items-center gap-3">
+                <input type="text" id="task-input" placeholder="Add a new task..."
+                    class="flex-grow p-3 bg-stone-50 border-2 border-stone-200 rounded-lg focus:outline-none focus:border-stone-400 transition-colors">
+                <button type="submit"
+                    class="bg-stone-700 text-white font-semibold px-6 py-3 rounded-lg hover:bg-stone-800 transition-colors shadow-sm focus:outline-none focus:ring-2 focus:ring-stone-500 focus:ring-opacity-50">
+                    Add
+                </button>
+            </form>
+        </section>
+
+        <main>
+            <ul id="task-list" class="space-y-3">
+            </ul>
+        </main>
+
+        <footer id="task-footer"
+            class="mt-6 pt-4 border-t border-stone-200 flex flex-wrap items-center justify-between gap-4 text-sm text-stone-500 hidden">
+            <span id="task-count"></span>
+            <div id="filters" class="flex items-center gap-2">
+                <button data-filter="all"
+                    class="filter-btn active px-3 py-1 rounded-md hover:bg-stone-200 transition-colors">All</button>
+                <button data-filter="active"
+                    class="filter-btn px-3 py-1 rounded-md hover:bg-stone-200 transition-colors">Active</button>
+                <button data-filter="completed"
+                    class="filter-btn px-3 py-1 rounded-md hover:bg-stone-200 transition-colors">Completed</button>
+            </div>
+            <button id="clear-completed-btn" class="hover:text-stone-800 transition-colors">Clear Completed</button>
+        </footer>
+
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
